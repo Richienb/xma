@@ -1,6 +1,6 @@
 {
 	"name": "xma",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"description": "Parse xml into json or the inverse.",
 	"repository": "https://github.com/Richienb/xma.git",
 	"author": "Richie Bendall <richiebendall@gmail.com>",
