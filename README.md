@@ -1,41 +1,63 @@
-# the-module [![Travis CI Build Status](https://img.shields.io/travis/com/Richienb/the-module/master.svg?style=for-the-badge)](https://travis-ci.com/Richienb/the-module)
+# xma [![Travis CI Build Status](https://img.shields.io/travis/com/Richienb/xma/master.svg?style=for-the-badge)](https://travis-ci.com/Richienb/xma)
 
-My awesome module.
+Parse xml into json or the inverse.
 
-[![NPM Badge](https://nodei.co/npm/the-module.png)](https://npmjs.com/package/the-module)
+[![NPM Badge](https://nodei.co/npm/xma.png)](https://npmjs.com/package/xma)
 
 ## Install
 
 ```sh
-npm install the-module
+npm install xma
 ```
 
 ## Usage
 
 ```js
-const theModule = require("the-module");
+const { parseXml, buildXml } = require("xma");
 
-theModule("unicorns");
-//=> 'unicorns & rainbows'
+parseXml("<root>Hello World</root>");
+//=> { root: "Hello World" }
+
+parseXml(`<root foo="bar">Hello World</root>`);
+//=> { root: { _: "Hello World", $: { foo: "bar" } } }
+
+buildXml({ root: "Hello World" });
+//=> "<root>Hello World</root>"
+
+buildXml({ root: { _: "Hello World", $: { foo: "bar" } } });
+//=> "<root foo="bar">Hello World</root>"
 ```
 
 ## API
 
-### theModule(input, options?)
+### parseXml(xmlString, options?)
 
-#### input
+Parse xml into json.
+
+#### xmlString
 
 Type: `string`
 
-Lorem ipsum.
+The xml to parse.
 
 #### options
 
 Type: `object`
 
-##### postfix
+The [options](https://www.npmjs.com/package/xml2js#options) to pass to xml2js.
 
-Type: `string`\
-Default: `rainbows`
+### buildXml(xmlObject, options?)
 
-Lorem ipsum.
+Build xml from json.
+
+#### xmlObject
+
+Type: `string`
+
+The json object to build.
+
+#### options
+
+Type: `object`
+
+The [options](https://www.npmjs.com/package/xml2js#options-for-the-builder-class) to pass to xml2js.

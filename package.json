@@ -1,8 +1,8 @@
 {
-	"name": "the-module",
+	"name": "xma",
 	"version": "0.0.0",
-	"description": "My awesome module.",
-	"repository": "https://github.com/Richienb/the-module.git",
+	"description": "Parse xml into json or the inverse.",
+	"repository": "https://github.com/Richienb/xma.git",
 	"author": "Richie Bendall <richiebendall@gmail.com>",
 	"license": "MIT",
 	"main": "index.js",
@@ -17,17 +17,36 @@
 		"lint": "xo",
 		"test": "xo && ava"
 	},
-	"keywords": [],
-	"dependencies": {},
-	"devDependencies": {
-		"ava": "^3.8.1",
-		"eslint-config-richienb": "^0.4.2",
-		"xo": "^0.30.0"
+	"keywords": [
+		"xml",
+		"parse",
+		"json",
+		"build",
+		"transform",
+		"object",
+		"data"
+	],
+	"dependencies": {
+		"is-plain-obj": "^2.1.0",
+		"type-fest": "^0.16.0",
+		"xml2js": "^0.4.23"
 	},
-	"resolutions": {
-		"eslint": "^6.8.0"
+	"devDependencies": {
+		"ava": "^3.9.0",
+		"eslint-config-richienb": "^0.4.2",
+		"xo": "^0.32.0"
 	},
 	"xo": {
-		"extends": "richienb"
+		"extends": "richienb",
+		"rules": {
+			"import/no-unresolved": [
+				"error",
+				{
+					"ignore": [
+						"type-fest"
+					]
+				}
+			]
+		}
 	}
 }

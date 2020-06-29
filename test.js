@@ -1,13 +1,12 @@
 const test = require("ava")
-const theModule = require(".")
+const { parseXml, buildXml } = require(".")
 
-test("main", t => {
-	t.throws(() => {
-		theModule(123)
-	}, {
-		instanceOf: TypeError,
-		message: "Expected a string, got number"
-	})
+test("parse xml", t => {
+	t.deepEqual(parseXml("<root>Hello World</root>"), { root: "Hello World" })
+	t.deepEqual(parseXml("<root foo=\"bar\">Hello World</root>"), { root: { _: "Hello World", $: { foo: "bar" } } })
+})
 
-	t.is(theModule("unicorns"), "unicorns & rainbows")
+test("build xml", t => {
+	t.is(buildXml({ root: "Hello World" }), "<root>Hello World</root>")
+	t.is(buildXml({ root: { _: "Hello World", $: { foo: "bar" } } }), "<root foo=\"bar\">Hello World</root>")
 })
