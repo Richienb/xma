@@ -51,7 +51,5 @@ exports.buildXml = (xmlObject, options = {}) => {
 		...options
 	}
 
-	const builder = new xml.Builder(options)
-
-	return builder.buildObject(xmlObject)
+	return new xml.Builder(options).buildObject(xmlObject)
 }
